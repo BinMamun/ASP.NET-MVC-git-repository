@@ -15,7 +15,7 @@ namespace Work_01.Models.Metadata
         public System.DateTime ReleaseDate { get; set; }
         [Required, StringLength(50), Display(Name ="IMDB Rating")]
         public string ImdbRating { get; set; }
-        [Required]
+        [Required, Display(Name ="Rotten Tomato Freshness")]
         public int RottenTomatoFreshness { get; set; }
     }
 }

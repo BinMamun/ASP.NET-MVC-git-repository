@@ -14,7 +14,6 @@ namespace Work_01.Models
     using System.ComponentModel.DataAnnotations;
     using Work_01.Models.Metadata;
 
-    [MetadataType(typeof(MoviesType))]
     public partial class Movies
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

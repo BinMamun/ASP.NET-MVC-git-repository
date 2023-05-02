@@ -14,15 +14,14 @@ namespace Work_01.Models
     using System.ComponentModel.DataAnnotations;
     using Work_01.Models.Metadata;
 
-    [MetadataType(typeof(ActorType))]
+
     public partial class Actors
     {
         public int ActorId { get; set; }
         public string Name { get; set; }
         public int Gender { get; set; }
         public string Picture { get; set; }
-        public int MovieId { get; set; }
-    
+        public int MovieId { get; set; }    
         public virtual Movies Movies { get; set; }
     }
 }
