@@ -57,8 +57,9 @@ namespace Work_01.Controllers
             return View(db.Movies.First(x => x.MovieId == id));
         }
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirm(Movies m)
-        {            
+        public ActionResult DeleteConfirm(int id)
+        {
+            Movies m = new Movies { MovieId = id };  
             db.Entry(m).State = EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");           
