@@ -13,7 +13,7 @@ namespace Work_01.Models.Metadata
         [Required,StringLength(50)]
         public string Name { get; set; }
         [Required, EnumDataType(typeof(Gender))]
-        public int Gender { get; set; }
+        public Gender Gender { get; set; }
         [Required, StringLength(150)]
         public string Picture { get; set; }
         [Required]

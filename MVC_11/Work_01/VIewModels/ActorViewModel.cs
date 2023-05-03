@@ -13,10 +13,10 @@ namespace Work_01.VIewModels
         [Required, StringLength(50)]
         public string Name { get; set; }
         [Required, EnumDataType(typeof(Gender))]
-        public int Gender { get; set; }
+        public Gender Gender { get; set; }
         [StringLength(150)]
         public HttpPostedFileBase Picture { get; set; }
-        [Required]
+        [Required, Display(Name ="Movies")]
         public int MovieId { get; set; }
     }
 }

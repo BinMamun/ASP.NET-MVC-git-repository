@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Work_01.Models.Actors>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using PagedList.Mvc;
+@using PagedList;
+<div class="row align-items-center col">
+    <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
+    <div class="col-6 d-flex justify-content-center"><h3 class="display-6">Actors List</h3></div>
+    <div class="col-3 d-flex justify-content-end"><p class="card-text">Total Actors: @ViewBag.Count</p></div>
+    <hr />
+</div>
+<div class="d-flex justify-content-end mb-2 col-11" style="margin-left:30px;">
+    @Html.ActionLink(" ", "Create", "Actors", null, new { @title = "Add new article", @class = "btn btn-sm btn-outline-primary bi bi-plus-lg" })
+</div>
+<div>
+    <table class="table table-striped shadow-sm table-bordered table-sm container ">
+        <thead class="table-primary">
+            <tr>
+                <th class="text-center">@Html.DisplayNameFor(x => x.ActorId)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.Picture)</th>
+                <th class="col-3 text-center">@Html.DisplayNameFor(x => x.Name)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.Gender)</th>
+                <th class="col-2 text-center">@Html.DisplayNameFor(x => x.Movies)</th>
+                <th class=" text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+            <tr>
+                <td class="text-center">@Html.DisplayFor(x => m.ActorId)</td>
+                <td class="text-center">
+                    <img src="~/Uploads/@m.Picture" width="40" class="img-thumbnail rounded-1" />
+                </td>
+                <td class="text-center">@Html.DisplayFor(x => m.Name)</td>
+                <td class="text-center">@Html.DisplayFor(x => m.Gender)</td>
+                <td class="text-center">@Html.DisplayFor(x => m.Movies.Title)</td>
+                <td class="text-center">
+                    @Html.ActionLink(" ", "Edit", "Actors", new { id = m.ActorId }, new { @title = "Edit", @class = "btn btn-sm btn-outline-primary bi bi-pencil-square " })
+
+                    @Html.ActionLink(" ", "Delete", "Actors", new { id = m.ActorId }, new { @title = "Delete", @class = "btn btn-sm btn-outline-danger bi bi-trash3 " })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-center bottom">
+    @Html.PagedListPager((IPagedList)Model, pg => Url.Action("Index", new { pg }))
+</div>
+
+@section styles {
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <style>
+        .bottom {
+            position: fixed;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+        }
+    </style>
+}
+
