@@ -12,7 +12,7 @@ namespace Work_01.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Work_01.Models.Metadata;
+    using Work_01.Models.MetaData;
 
     [MetadataType(typeof(ActorType))]
     public partial class Actors

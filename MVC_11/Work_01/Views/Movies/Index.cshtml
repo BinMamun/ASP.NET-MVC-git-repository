@@ -1,66 +1,44 @@
 ﻿@model IEnumerable<Work_01.Models.Movies>
-
 @{
     ViewBag.Title = "Index";
 }
-@using PagedList.Mvc;
-@using PagedList;
-<div class="row align-items-center col">
-    <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
-    <div class="col-6 d-flex justify-content-center"><h3 class="display-6">Movie List</h3></div>
-    <div class="col-3 d-flex justify-content-end"><p class="card-text">Total Movies: @ViewBag.Count</p></div>
+
+<div class="row align-items-center mb-2">
+    <div class="col-3">Date: @DateTime.Now.ToString("dd/MM/yyyy")</div>
+    <div class="col-6 text-center display-6">Movie List</div>
     <hr />
 </div>
-<div class="d-flex justify-content-end mb-2 col-11" style="margin-left:30px;">
-    @Html.ActionLink(" ", "Create", "Movies", null, new { @title = "Add new article", @class = "btn btn-sm btn-outline-primary bi bi-plus-lg" })
+<div class="col-11 text-end mb-2" style="margin-left: 20px;">
+    @Html.ActionLink("Add New", "Create", "Movies", null, new { @class = "btn btn-sm btn-success" })
 </div>
-<div>
-    <table class="table table-striped shadow-sm table-bordered table-sm container ">
-        <thead class="table-primary">
-            <tr>
-                <th class="text-center">@Html.DisplayNameFor(x => x.MovieId)</th>
-                <th class="col-3 text-center">@Html.DisplayNameFor(x => x.Title)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ReleaseDate)</th>
-                <th class="col-2 text-center">@Html.DisplayNameFor(x => x.ImdbRating)</th>
-                <th class="col-2 text-center">@Html.DisplayNameFor(x => x.RottenTomatoFreshness)</th>
-                <th class=" text-center">Action</th>
+<div class="container">
+    <table class="table table-sm table-striped table-borderedless table-light">
+        <thead class="table-success">
+            <tr class="text-center">
+                <th>@Html.DisplayNameFor(x => x.MovieId)</th>
+                <th>@Html.DisplayNameFor(x => x.Title)</th>
+                <th>@Html.DisplayNameFor(x => x.ReleaseDate)</th>
+                <th>@Html.DisplayNameFor(x => x.ImdbRating)</th>
+                <th>@Html.DisplayNameFor(x => x.RottenTomatoFreshness)</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var m in Model)
+            @foreach (var p in Model)
             {
-                <tr>
-                    <td class="text-center">@Html.DisplayFor(x => m.MovieId)</td>
-                    <td class="text-center">@Html.DisplayFor(x => m.Title)</td>
-                    <td class="text-center">@Html.DisplayFor(x => m.ReleaseDate)</td>
-                    <td class="text-center">@Html.DisplayFor(x => m.ImdbRating)</td>
-                    <td class="text-center">@Html.DisplayFor(x => m.RottenTomatoFreshness)</td>
-                    <td class="text-center">
-                        @Html.ActionLink(" ", "Edit", "Movies", new { id = m.MovieId }, new { @title = "Edit", @class = "btn btn-sm btn-outline-primary bi bi-pencil-square " })
-
-                        @Html.ActionLink(" ", "Delete", "Movies", new { id = m.MovieId }, new { @title = "Delete", @class = "btn btn-sm btn-outline-danger bi bi-trash3 " })
+                <tr class="text-center align-middle">
+                    <td>@Html.DisplayFor(x => p.MovieId)</td>
+                    <td>@Html.DisplayFor(x => p.Title)</td>
+                    <td>@Html.DisplayFor(x => p.ReleaseDate)</td>
+                    <td>@Html.DisplayFor(x => p.ImdbRating)</td>
+                    <td>@Html.DisplayFor(x => p.RottenTomatoFreshness)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Movies", new { id = p.MovieId }, new { @class = "btn btn-sm btn-outline-light text-primary" })
+                        @Html.ActionLink("Delete", "Delete", "Movies", new { id = p.MovieId }, new { @class = "btn btn-sm btn-outline-light text-danger" })
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-<div class="d-flex justify-content-center bottom">
-    @Html.PagedListPager((IPagedList)Model, pg => Url.Action("Index", new { pg }))
-</div>
-
-@section styles {
-
-    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
-    <style>
-        .bottom{
-            position:fixed;
-            bottom:50px;
-            left:0;
-            right:0;
-        }
-    </style>
-}
 

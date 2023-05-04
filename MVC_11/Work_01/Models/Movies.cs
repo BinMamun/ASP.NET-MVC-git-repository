@@ -12,8 +12,9 @@ namespace Work_01.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Work_01.Models.Metadata;
+    using Work_01.Models.MetaData;
 
+    [MetadataType(typeof(MovieType))]
     public partial class Movies
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +26,7 @@ namespace Work_01.Models
         public int MovieId { get; set; }
         public string Title { get; set; }
         public System.DateTime ReleaseDate { get; set; }
-        public string ImdbRating { get; set; }
+        public double ImdbRating { get; set; }
         public int RottenTomatoFreshness { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

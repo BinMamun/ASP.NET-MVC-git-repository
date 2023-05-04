@@ -17,7 +17,7 @@
     <Property Name="MovieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ReleaseDate" Type="date" Nullable="false" />
-    <Property Name="ImdbRating" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImdbRating" Type="float" Nullable="false" />
     <Property Name="RottenTomatoFreshness" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK__Actors__MovieId__38996AB5">

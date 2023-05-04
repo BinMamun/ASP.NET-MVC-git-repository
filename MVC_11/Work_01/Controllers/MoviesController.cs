@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Work_01.Models;
-using Work_01.Models.Metadata;
-using PagedList;
 
 namespace Work_01.Controllers
 {
@@ -14,12 +12,10 @@ namespace Work_01.Controllers
     {
         private readonly MovieDbContext db = new MovieDbContext();
         // GET: Movies
-        public ActionResult Index(int pg=1)
+        public ActionResult Index()
         {
-            ViewBag.Count = db.Movies.Count();            
-            return View(db.Movies.ToList().OrderBy(x=> x.MovieId).ToPagedList(pg, 5));
+            return View(db.Movies.ToList());
         }
-
         public ActionResult Create()
         {
             return View();
@@ -28,7 +24,7 @@ namespace Work_01.Controllers
         public ActionResult Create(Movies m)
         {
             if (ModelState.IsValid)
-            {              
+            {
                 db.Movies.Add(m);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -37,14 +33,14 @@ namespace Work_01.Controllers
         }
 
         public ActionResult Edit(int id)
-        {            
+        {
             return View(db.Movies.First(x => x.MovieId == id));
         }
         [HttpPost]
         public ActionResult Edit(Movies m)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 db.Entry(m).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,10 +55,11 @@ namespace Work_01.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirm(int id)
         {
-            Movies m = new Movies { MovieId = id };  
+            Movies m = db.Movies.First(x => x.MovieId == id);
             db.Entry(m).State = EntityState.Deleted;
             db.SaveChanges();
-            return RedirectToAction("Index");           
+            return RedirectToAction("Index");
+
         }
     }
 }

@@ -22,7 +22,7 @@
           <Property Name="MovieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ReleaseDate" Type="date" Nullable="false" />
-          <Property Name="ImdbRating" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImdbRating" Type="float" Nullable="false" />
           <Property Name="RottenTomatoFreshness" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Actors__MovieId__38996AB5">
@@ -68,7 +68,7 @@
           <Property Name="MovieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ImdbRating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImdbRating" Type="Double" Nullable="false" />
           <Property Name="RottenTomatoFreshness" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Actors" Relationship="Self.FK__Actors__MovieId__38996AB5" FromRole="Movies" ToRole="Actors" />
         </EntityType>

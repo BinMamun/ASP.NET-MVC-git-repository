@@ -1,0 +1,91 @@
+﻿@model Work_01.ViewModel.ActorViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row align-items-center col mb-5">
+    <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
+    <div class="col-6 d-flex justify-content-center"><h5 class="display-6">Edit Actor</h5></div>
+    <hr />
+</div>
+<div class="col-11 d-flex justify-content-end mb-5">
+    @Html.ActionLink(" ", "Index", "Actors", null, new { @title = "Back to list", @class = "btn btn-sm btn-success bi-arrow-left" })
+</div>
+
+@using (Html.BeginForm("Edit", "Actors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x=> x.ActorId)
+    <div class="row col mb-2 align-items-center offset-2">
+        <div class="col-3 text-end">
+            @Html.LabelFor(x => x.Name, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row col mb-2 align-items-center offset-2">
+        <div class="col-3 text-end">
+            @Html.LabelFor(x => x.Gender, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.EnumDropDownListFor(x => x.Gender, "Select Gender", new { @class = "form-select" })
+        </div>
+        <div class="col-3">
+            @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row col mb-2 align-items-center offset-2">
+        <div class="col-3 text-end">
+            @Html.LabelFor(x => x.MovieId, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.DropDownListFor(x => x.MovieId, new SelectList(ViewBag.Movies, "MovieId", "Title"), "Select Movie", new { @class = "form-select" })
+        </div>
+        <div class="col-3">
+            @Html.ValidationMessageFor(x => x.MovieId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row col mb-2 align-items-center offset-2">
+        <div class="col-3 text-end">
+            @Html.LabelFor(x => x.Picture, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", type = "file" })
+        </div>
+        <div class="col-3">
+            <img src="~/Uploads/@ViewBag.Pic" class="img-fluid img-row" />
+        </div>
+    </div>
+
+    <div class="row col mb-2 align-items-center offset-5">
+        <div class="col-3 text-center">
+            <button type="submit" title="Save to database" class="btn btn-success">Update</button>
+        </div>
+    </div>
+}
+
+@section styles {
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+        <style>
+            .img-row {
+                width: 50px;
+                height: 50px;
+                border: none;
+                object-fit: contain;
+            }
+        </style>
+
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
