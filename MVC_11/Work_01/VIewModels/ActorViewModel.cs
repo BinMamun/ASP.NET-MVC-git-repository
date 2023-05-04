@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Work_01.Models.Metadata;
 
-namespace Work_01.VIewModels
+namespace Work_01.ViewModels
 {
     public class ActorViewModel
     {
@@ -14,7 +14,7 @@ namespace Work_01.VIewModels
         public string Name { get; set; }
         [Required, EnumDataType(typeof(Gender))]
         public Gender Gender { get; set; }
-        [StringLength(150)]
+        [StringLength(200)]
         public HttpPostedFileBase Picture { get; set; }
         [Required, Display(Name ="Movies")]
         public int MovieId { get; set; }

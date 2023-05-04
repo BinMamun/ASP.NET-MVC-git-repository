@@ -35,7 +35,7 @@
                     <img src="~/Uploads/@m.Picture" width="40" class="img-thumbnail rounded-1" />
                 </td>
                 <td class="text-center">@Html.DisplayFor(x => m.Name)</td>
-                <td class="text-center">@Html.DisplayFor(x => m.Gender)</td>
+                <td class="text-center">@(m.Gender==1? "Male":"Female")</td>
                 <td class="text-center">@Html.DisplayFor(x => m.Movies.Title)</td>
                 <td class="text-center">
                     @Html.ActionLink(" ", "Edit", "Actors", new { id = m.ActorId }, new { @title = "Edit", @class = "btn btn-sm btn-outline-primary bi bi-pencil-square " })

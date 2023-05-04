@@ -14,7 +14,7 @@ namespace Work_01.Models
     using System.ComponentModel.DataAnnotations;
     using Work_01.Models.Metadata;
 
-
+    [MetadataType(typeof(ActorType))]
     public partial class Actors
     {
         public int ActorId { get; set; }

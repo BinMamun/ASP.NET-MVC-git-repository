@@ -1,4 +1,4 @@
-﻿@model Work_01.VIewModels.ActorViewModel
+﻿@model Work_01.ViewModels.ActorViewModel
 @{
     ViewBag.Title = "Create";
 }
@@ -43,7 +43,7 @@
             @Html.LabelFor(x => x.MovieId, new { @class = "col-form-label" })
         </div>
         <div class="col-4">
-            @Html.DropDownListFor(x => x.MovieId, new SelectList(ViewBag.Movies,"MovieId","Title"), "Select Movie", new { @class = "form-select" })
+            @Html.DropDownListFor(x => x.MovieId, new SelectList(ViewBag.Movies, "MovieId", "Title"), "Select Movie", new { @class = "form-select" })
         </div>
         <div class="col-4">
             @Html.ValidationMessageFor(x => x.MovieId, "", new { @class = "text-danger" })
@@ -54,12 +54,13 @@
             @Html.LabelFor(x => x.Picture, new { @class = "col-form-label" })
         </div>
         <div class="col-4">
-            @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", type = "file" })
+            @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", @type = "file" })
         </div>
         <div class="col-4">
             @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group col-1 offset-6">
         <button type="submit" title="Save to database" class="btn btn-primary">Save</button>
     </div>
@@ -68,20 +69,4 @@
 @section styles {
 
     <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
 }
-
-@section scripts{
-    <script src="~/Scripts/jquery-3.6.4.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/bootstrap-datepicker.js"></script>
-    <script>
-        $("#ReleaseDate").datepicker({
-            format: "yyyy-mm-dd"
-        });
-    </script>
-
-}
-
