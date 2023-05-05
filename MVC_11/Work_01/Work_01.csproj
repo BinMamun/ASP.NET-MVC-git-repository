@@ -2280,6 +2280,7 @@
     <Content Include="Views\Actors\Create.cshtml" />
     <Content Include="Views\Actors\Edit.cshtml" />
     <Content Include="Views\Actors\Delete.cshtml" />
+    <Content Include="Views\Actors\ActorsByMovie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

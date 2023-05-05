@@ -19,6 +19,11 @@ namespace Work_01.Controllers
         {
             return View(db.Actors.ToList());
         }
+        public ActionResult ActorsByMovie(int id)
+        {
+            ViewBag.Movie = db.Movies.First(x => x.MovieId == id).Title;
+            return View(db.Actors.Where(x => x.MovieId == id).ToList());
+        }
         public ActionResult Create()
         {
             ViewBag.Movies = db.Movies.Select(x => new { x.MovieId, x.Title }).ToList();
@@ -100,9 +105,8 @@ namespace Work_01.Controllers
         }
         [HttpPost,ActionName("Delete")]
         public ActionResult DeleteConfirm(int id)
-        {
-            ViewBag.Movies = db.Movies.Select(x=> new {x.MovieId, x.Title}).ToList();
-            var ac = new Actors { ActorId = id };
+        {           
+            var ac = new Actors { ActorId = id };            
             db.Entry(ac).State = EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");

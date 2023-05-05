@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Work_01.Models.Actors>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row align-items-center mb-2">
+    <div class="col-3">Date: @DateTime.Now.ToString("dd/MM/yyyy")</div>
+    <div class="col-6 text-center display-6">@ViewBag.Movie</div>
+    <hr />
+</div>
+
+<div class="col-11 text-end mb-2" style="margin-left: 20px;">
+    @Html.ActionLink("Add New", "Create", "Actors", null, new { @class = "btn btn-sm btn-success" })
+    @Html.ActionLink(" ", "Index", "Actors", null, new { @title = "Back to list", @class = "btn btn-sm btn-success bi-arrow-left" })
+</div>
+<div class="container">
+    <table class="table table-sm table-striped table-borderedless table-light">
+        <thead class="table-success">
+            <tr class="text-center">
+                <th>@Html.DisplayNameFor(x => x.ActorId)</th>
+                <th>@Html.DisplayNameFor(x => x.Picture)</th>
+                <th>@Html.DisplayNameFor(x => x.Name)</th>
+                <th>@Html.DisplayNameFor(x => x.Gender)</th>
+                <th>@Html.DisplayNameFor(x => x.MovieId)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr class="text-center align-middle">
+                    <td>@Html.DisplayFor(x => p.ActorId)</td>
+                    <td>
+                        <img src="~/Uploads/@p.Picture" class="img-fluid img-row" />
+                    </td>
+                    <td>@Html.DisplayFor(x => p.Name)</td>
+                    <td>@(p.Gender == 1? "Male":"Female")</td>
+                    <td>@Html.DisplayFor(x => p.Movies.Title)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Actors", new { id = p.ActorId }, new { @class = "btn btn-sm btn-outline-light text-primary" })
+                        @Html.ActionLink("Delete", "Delete", "Actors", new { id = p.ActorId }, new { @class = "btn btn-sm btn-outline-light text-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section styles{
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        .img-row {
+            width: 50px;
+            height: 50px;
+            border: none;
+            object-fit: contain;
+        }
+    </style>
+}
+
+@{
+    ViewBag.Title = "ActorsByMovie";
+}

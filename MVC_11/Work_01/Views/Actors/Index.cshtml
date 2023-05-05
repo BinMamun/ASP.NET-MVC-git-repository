@@ -33,7 +33,7 @@
                     </td>
                     <td>@Html.DisplayFor(x => p.Name)</td>
                     <td>@(p.Gender == 1? "Male":"Female")</td>
-                    <td>@Html.DisplayFor(x => p.Movies.Title)</td>
+                    <td>@Html.ActionLink(p.Movies.Title, "ActorsByMovie", "Actors", new {id = p.MovieId }, new {@class="text-dark" })</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", "Actors", new { id = p.ActorId }, new { @class = "btn btn-sm btn-outline-light text-primary" })
                         @Html.ActionLink("Delete", "Delete", "Actors", new { id = p.ActorId}, new { @class = "btn btn-sm btn-outline-light text-danger" })
