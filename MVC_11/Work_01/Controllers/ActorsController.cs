@@ -101,6 +101,7 @@ namespace Work_01.Controllers
         [HttpPost,ActionName("Delete")]
         public ActionResult DeleteConfirm(int id)
         {
+            ViewBag.Movies = db.Movies.Select(x=> new {x.MovieId, x.Title}).ToList();
             var ac = new Actors { ActorId = id };
             db.Entry(ac).State = EntityState.Deleted;
             db.SaveChanges();

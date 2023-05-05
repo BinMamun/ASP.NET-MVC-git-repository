@@ -1,12 +1,12 @@
 ﻿@model Work_01.ViewModel.ActorViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Delete";
 }
 
 <div class="row align-items-center col mb-5">
     <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
-    <div class="col-6 d-flex justify-content-center"><h5 class="display-6">Edit Actor</h5></div>
+    <div class="col-6 d-flex justify-content-center"><h5 class="display-6">Delete Actor</h5></div>
     <hr />
 </div>
 <div class="col-11 d-flex justify-content-end mb-5">
@@ -21,32 +21,23 @@
             @Html.LabelFor(x => x.Name, new { @class = "col-form-label" })
         </div>
         <div class="col-4">
-            @Html.TextBoxFor(x => x.Name, new { @readonly = true, @class = "form-control" })
-        </div>
-        <div class="col-3">
-            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
-        </div>
+            @Html.DisplayFor(x=> x.Name)
+        </div>        
     </div>
     <div class="row col mb-2 align-items-center offset-2">
         <div class="col-3 text-end">
             @Html.LabelFor(x => x.Gender, new { @class = "col-form-label" })
         </div>
         <div class="col-4">
-            @Html.EnumDropDownListFor(x => x.Gender, "Select Gender", new { @readonly = true, @class = "form-control" })
-        </div>
-        <div class="col-3">
-            @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
-        </div>
+            @Html.DisplayFor(x => x.Gender)
+        </div>        
     </div>
     <div class="row col mb-2 align-items-center offset-2">
         <div class="col-3 text-end">
             @Html.LabelFor(x => x.MovieId, new { @class = "col-form-label" })
         </div>
         <div class="col-4">
-            @Html.DropDownListFor(x => x.MovieId, new SelectList(ViewBag.Movies, "MovieId", "Title"), "Select Movie", new {@class = "form-control disabled" })
-        </div>
-        <div class="col-3">
-            @Html.ValidationMessageFor(x => x.MovieId, "", new { @class = "text-danger" })
+           @Html.DisplayFor(x=> x.MovieId)
         </div>
     </div>
 
