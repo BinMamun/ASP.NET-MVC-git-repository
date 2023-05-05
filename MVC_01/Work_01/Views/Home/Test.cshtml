@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+<div><p style="color:darkcyan;">@DateTime.Now</p></div>
+
+@{
+    string name = "Shamsul Alam";
+    string[] BookName = new string[] { "Jhochonar kabbo", "Nodi or Pathor", "Taler somahar", "Bichitro Bivrat" };
+}
+
+<div>
+    <div>Name: @name</div>    
+</div>
+<hr />
+@foreach (var j in BookName)
+    {
+        <li>@j</li>
+    }
+
+@for (int i = 0; i < 5; i++)
+{
+    <div>@(i+1) - @name</div>
+}
