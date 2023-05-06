@@ -1,5 +1,5 @@
 ﻿@model Work_01.ViewModel.ActorViewModel
-
+@using Work_01.Models.MetaData
 @{
     ViewBag.Title = "Delete";
 }
@@ -37,7 +37,7 @@
             @Html.LabelFor(x => x.MovieId, new { @class = "col-form-label" })
         </div>
         <div class="col-4">
-           @Html.DisplayFor(x=> x.MovieId)
+           @((Gender)Model.Gender)
         </div>
     </div>
 
