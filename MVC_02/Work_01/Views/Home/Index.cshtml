@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Work_01.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div>Total Customers: @ViewBag.Count</div>
+<div>First Customer: @ViewData["FirstCustomer"]</div>
+<table class="table table-dark table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Customer Id</th>
+            <th>Company Name</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.CustomerID</td>
+                <td>@c.CompanyName</td>
+                <td>@c.City</td>
+                <td>@c.Country</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
