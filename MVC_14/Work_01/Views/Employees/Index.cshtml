@@ -30,8 +30,9 @@
                     <td>@Html.DisplayFor(x => p.JoinDate)</td>
                     <td>@Html.DisplayFor(x => p.Salary)</td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", "Employees", new { id = p.Id }, new { @class = "btn btn-sm btn-outline-light text-primary" })
-                        @Html.ActionLink("Delete", "Delete", "Employees", new { id = p.Id }, new { @class = "btn btn-sm btn-outline-light text-danger" })
+                        @Html.ActionLink("Edit", "Edit", "Employees", new { id = p.Id }, new { @class = "btn btn-sm btn-outline-primary" })
+                        @Html.ActionLink("Delete", "Delete", "Employees", new { id = p.Id }, new { @class = "btn btn-sm btn-outline-danger" })
+                        
                     </td>
                 </tr>
             }

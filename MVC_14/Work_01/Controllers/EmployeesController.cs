@@ -47,5 +47,17 @@ namespace Work_01.Controllers
             }
             return View(e);
         }
+
+        public ActionResult Delete(int id)
+        {
+            return View(db.Employees.First(x => x.Id == id));
+        }
+        [HttpPost]
+        public ActionResult Delete(Employee e)
+        {
+            db.Entry(e).State = EntityState.Deleted;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
