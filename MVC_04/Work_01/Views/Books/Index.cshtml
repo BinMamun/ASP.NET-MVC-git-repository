@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Work_01.Models.Book>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row"><h2>Books</h2></div>
+<div class="d-flex justify-content-end mb-2">
+    @Html.ActionLink(" Add New", "Create", "Books", null, new { @class = "btn btn-success bi bi-plus-circle" })
+</div>
+<div>
+    <table class="table table-light table-striped table-bordered">
+        <thead class="table-success">
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.Id)</th>
+                <th>@Html.DisplayNameFor(x => x.Title)</th>
+                <th>@Html.DisplayNameFor(x => x.Genre)</th>
+                <th>@Html.DisplayNameFor(x => x.CoverPrice)</th>
+                <th>Action</th>             
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(x => b.Id)</td>
+                <td>@Html.DisplayFor(x => b.Title)</td>
+                <td>@Html.DisplayFor(x => b.Genre)</td>
+                <td>@Html.DisplayFor(x => b.CoverPrice)</td>
+                <td>@Html.ActionLink(" ", "Edit", "Books", new { id = b.Id }, new { @class = "btn btn-outline-primary bi bi-pencil" })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Styles{
+
+    <link href="~/Content/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+}

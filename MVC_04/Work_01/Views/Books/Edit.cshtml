@@ -1,0 +1,53 @@
+﻿@model Work_01.Models.Book
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="col row"><h2>Edit Book</h2></div>
+<hr />
+<div class="d-flex justify-content-start mb-2">
+    @Html.ActionLink(" Back", "Index", "Books", null, new { @class = "btn btn-outline-success bi-arrow-left-circle" })
+</div>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=> x.Id)
+    <div class="col-12">
+        <div class="form-group row offset-2 mb-2">
+            @Html.LabelFor(x => x.Title, new { @class = "col-form-label col-2" })
+            <div class="col-4">
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger col-auto" })
+        </div>
+        <div class="from-group row offset-2 mb-2">
+            @Html.LabelFor(x => x.Genre, new { @class = "col-form-label col-2" })
+            <div class="col-4">
+                @Html.EnumDropDownListFor(x => x.Genre, "", new { @class = "form-select " })
+            </div>
+            @Html.ValidationMessageFor(x => x.Genre, "", new { @class = "text-danger col-auto" })
+
+        </div>
+
+        <div class="form-group row offset-2 mb-2">
+            @Html.LabelFor(x => x.CoverPrice, new { @class = "col-form-label col-2" })
+            <div class="col-4">
+                @Html.TextBoxFor(x => x.CoverPrice, new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(x => x.CoverPrice, "", new { @class = "text-danger col-auto" })
+        </div>
+        <div class="form-group offset-5 mt-2">
+            <button type="submit" class="btn btn-success"><span class="bi bi-save">&#160;Update</span></button>
+        </div>
+    </div>
+}
+
+@section Styles{
+    <link href="~/Content/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
+@section Script
+{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}
