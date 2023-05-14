@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MVC_16.Models.Brand> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="display-6 text-center">Brands List</div>
+    <hr />
+    <div class="d-flex justify-content-end mb-1">
+        @Html.ActionLink("Add new", "Create", "Brands", null, new { @class = "btn btn-sm btn-success mb-2" })
+    </div>
+    <table class="table table-borderless">
+        <thead class="table-success">
+            <tr  class="text-center">
+                <th>@Html.DisplayNameFor(x => x.BrandId)</th>
+                <th>@Html.DisplayNameFor(x => x.BrandName)</th>
+                <th>@Html.DisplayNameFor(x => x.Origin)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            
+            @foreach(var b in Model)
+            {
+                <tr class="text-center">
+                    <td>@b.BrandId.ToString("00")</td>
+                    <td>@Html.DisplayFor(x=> b.BrandName)</td>
+                    <td>@Html.DisplayFor(x=> b.Origin)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Brands", new {id = b.BrandId}, new {@class="btn btn-sm btn-primary"})
+                        @Html.ActionLink("Delete", "Delete", "Brands", new {id = b.BrandId}, new {@class="btn btn-sm btn-danger"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

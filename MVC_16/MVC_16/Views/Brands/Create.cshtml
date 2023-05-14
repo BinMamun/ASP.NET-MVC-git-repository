@@ -1,0 +1,52 @@
+﻿@model MVC_16.Models.Brand
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row container offset-1">
+    <div class="d-flex justify-content-center display-6">Create Brand</div>
+    <hr />
+    <div class="col-12 d-flex justify-content-end mb-2">
+        @Html.ActionLink("Back", "Index", "Brands", null, new { @class = "btn btn-sm btn-success" })
+    </div>
+    <div class="" id="placeholder"></div>
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "placeholder", OnSuccess = "success" }))
+    {
+
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.BrandName, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(x => x.BrandName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.BrandName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.Origin, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(x => x.Origin, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Origin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" title="save" class="btn btn-outline-success">Save</button>
+        </div>
+    }
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function success() {
+            $('#form0').trigger("reset");
+        };
+    </script>
+}
