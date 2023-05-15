@@ -34,7 +34,7 @@ namespace MVC_16.Models
         public bool Discontinued { get; set; }
 
         //Foreign Key
-        [Required, ForeignKey("Brand")]
+        [Required, ForeignKey("Brand"), Display(Name ="Brand")]
         public int BrandId { get; set; }
         //Navigation
         public Brand Brand{ get; set; }

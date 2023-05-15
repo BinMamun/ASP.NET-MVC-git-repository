@@ -19,7 +19,7 @@ namespace MVC_16.ViewModel
         public decimal Price { get; set; }
         public HttpPostedFileBase Picture { get; set; }
         public bool Discontinued { get; set; }
-        //Foreign Key       
+        //Foreign Key
         public int BrandId { get; set; }
         //Navigation
         public Brand Brand { get; set; }

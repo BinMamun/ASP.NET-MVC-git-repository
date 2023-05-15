@@ -1,0 +1,96 @@
+﻿@model MVC_16.ViewModel.ProductViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row container offset-1">
+    <div class="d-flex justify-content-center display-6">Create Brand</div>
+    <hr />
+    <div class="col-12 d-flex justify-content-end mb-5">
+        @Html.ActionLink("Back", "Index", "Products", null, new { @class = "btn btn-sm btn-success" })
+    </div>
+    <div class="" id="placeholder"></div>
+    @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.ProductName, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.Brand, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.DropDownListFor(x => x.BrandId, new SelectList(ViewBag.Brand, "BrandId", "BrandName"), "Select Brand", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Brand, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.ReleaseDate, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(x => x.ReleaseDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ReleaseDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.Price, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.Discontinued, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                <div class="mt-1">
+                    Yes: @Html.RadioButtonFor(x => x.Discontinued, "True", new { @class = "form-check-input" })
+                    No : @Html.RadioButtonFor(x => x.Discontinued, "False", new { @class = "form-check-input" })
+                </div>
+                @Html.ValidationMessageFor(x => x.Discontinued, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-2">
+            <div class="col-3 text-end">
+                @Html.LabelFor(x => x.Picture, new { @class = " col-form-label" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", type = "file" })
+                @Html.ValidationMessageFor(x => x.Brand, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" title="save" class="btn btn-outline-success">Save</button>
+        </div>
+    }
+</div>
+
+@section styles{
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+    <script>
+        $('#ReleaseDate').datepicker();
+    </script>
+}
+
