@@ -51,7 +51,6 @@ namespace MVC_16.Controllers
             }
             return View(p);
         }
-
         public ActionResult Edit(int id)
         {
             Product p = db.Products.First(x => x.ProductId == id);  
@@ -71,18 +70,14 @@ namespace MVC_16.Controllers
         [HttpPost]
         public ActionResult Edit(ProductViewModel p)
         {
+            Product pd = db.Products.First(x => x.ProductId == p.ProductId);
             if (ModelState.IsValid)
             {
-                Product pd = new Product
-                {
-                    ProductId = p.ProductId,
-                    ProductName = p.ProductName,
-                    BrandId = p.BrandId,
-                    ReleaseDate = p.ReleaseDate,
-                    Discontinued = p.Discontinued,
-                    Price = p.Price,
-                    Picture = "images.png"
-                };
+                pd.ProductName = p.ProductName;
+                pd.BrandId = p.BrandId;
+                pd.ReleaseDate = p.ReleaseDate;
+                pd.Discontinued = p.Discontinued;
+                pd.Price = p.Price; 
 
                 if (p.Picture != null)
                 {
@@ -90,12 +85,23 @@ namespace MVC_16.Controllers
                     p.Picture.SaveAs(Server.MapPath("~/Images/") + fileName);
                     pd.Picture = fileName;
                 }
-                ViewBag.Brand = db.Brands.Select(x => new { x.BrandId, x.BrandName }).ToList();
-                ViewBag.Pic = p.Picture;
+                ViewBag.Brand = db.Brands.ToList();
+                ViewBag.Pic = pd.Picture;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(p);
+        }
+        public ActionResult Delete(int id)
+        {
+            return View(db.Products.Include(x => x.Brand).First(x => x.ProductId == id));
+        }
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DoDelete(int id)
+        {
+            var p = new Product { ProductId = id };            
+            db.Entry(p).State = EntityState.Deleted;
+            return RedirectToAction("Index");
         }
     }
 }

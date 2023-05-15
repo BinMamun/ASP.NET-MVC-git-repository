@@ -20,6 +20,7 @@ namespace MVC_16.ViewModel
         public HttpPostedFileBase Picture { get; set; }
         public bool Discontinued { get; set; }
         //Foreign Key
+        [Required, Display(Name ="Brand")]
         public int BrandId { get; set; }
         //Navigation
         public Brand Brand { get; set; }

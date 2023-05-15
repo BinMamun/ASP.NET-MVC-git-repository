@@ -1,0 +1,78 @@
+﻿@model MVC_16.Models.Product
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="row container offset-1">
+    <div class="d-flex justify-content-center display-6">Delete Brand</div>
+    <hr />
+    <div class="col-12 d-flex justify-content-end mb-5">
+        @Html.ActionLink("Back", "Index", "Products", null, new { @class = "btn btn-sm btn-success" })
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.ProductId)
+        <div class="offset-2">
+            <div class="row d-flex justify-content-center mb-2 align-middle">
+                <div class="col-3 text-end">
+                    @Html.DisplayNameFor(x => x.ProductName)
+                </div>
+                <div class="col-6">
+                    @Html.DisplayFor(x => x.ProductName)
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mb-2">
+                <div class="col-3 text-end">
+                    @Html.DisplayNameFor(x => x.BrandId)
+                </div>
+                <div class="col-6">
+                    @Html.DisplayFor(x => x.Brand.BrandName)
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mb-2">
+                <div class="col-3 text-end">
+                    @Html.DisplayNameFor(x => x.ReleaseDate)
+                </div>
+                <div class="col-6">
+                    @Html.DisplayFor(x => x.ReleaseDate)
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center mb-2">
+                <div class="col-3 text-end">
+                    @Html.DisplayNameFor(x => x.Price)
+                </div>
+                <div class="col-6">
+                    @Html.DisplayFor(x => x.Price)
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mb-2">
+                <div class="col-3 text-end">
+                    @Html.DisplayNameFor(x => x.Discontinued)
+                </div>
+                <div class="col-6">
+                    @(Model.Discontinued ? "Yes":"No")
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center mb-2">
+                <div class="col-3 text-end">
+                    @Html.DisplayNameFor(x => x.Picture)
+                </div>
+                <div class="col-6">
+                    <img src="~/Images/@Model.Picture" class="img-thumbnail rounded-1" width="50" />
+                </div>
+            </div>
+
+            <div class="offset-4 mt-3">
+                <button type="submit" title="delete" class="btn btn-outline-danger">Delete</button>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+
+
