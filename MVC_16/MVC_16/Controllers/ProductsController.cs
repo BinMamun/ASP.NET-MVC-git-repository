@@ -101,6 +101,7 @@ namespace MVC_16.Controllers
         {
             var p = new Product { ProductId = id };            
             db.Entry(p).State = EntityState.Deleted;
+	        db.SaveChanges();
             return RedirectToAction("Index");
         }
     }
