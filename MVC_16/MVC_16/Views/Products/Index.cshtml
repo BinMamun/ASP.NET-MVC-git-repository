@@ -32,7 +32,7 @@
                     <td>@Html.DisplayFor(x => p.ProductName)</td>
                     <td>@Html.DisplayFor(x => p.ReleaseDate)</td>
                     <td>@(p.Discontinued == true? "Yes":"No")</td>
-                    <td>@Html.DisplayFor(x => p.Brand.BrandName)</td>
+                    <td>@Html.ActionLink(p.Brand.BrandName, "BrandWiseProducts", "Products", new { id = p.BrandId } ,new { @class= "text-dark"})</td>
                     <td>@Html.DisplayFor(x => p.Price)</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", "Products", new { id = p.ProductId }, new { @class = "btn btn-sm btn-primary" })

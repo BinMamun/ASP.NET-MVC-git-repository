@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MVC_16.Models.Product>
+
+@{
+    ViewBag.Title = "BrandWiseProducts";
+}
+<div class="container">
+    <div class="display-6 text-center">@ViewBag.Brand</div>
+    <hr />
+    <div class="d-flex justify-content-end mb-1">
+        @Html.ActionLink("Add new", "Create", "Products", null, new { @class = "btn btn-sm btn-success mb-2" })
+    </div>
+    <table class="table table-borderless table-sm">
+        <thead class="table-success">
+            <tr class="text-center">
+                <th>@Html.DisplayNameFor(x => x.Picture)</th>
+                <th>@Html.DisplayNameFor(x => x.ProductName)</th>
+                <th>@Html.DisplayNameFor(x => x.ReleaseDate)</th>
+                <th>@Html.DisplayNameFor(x => x.Discontinued)</th>
+                <th>@Html.DisplayNameFor(x => x.Brand)</th>
+                <th>@Html.DisplayNameFor(x => x.Price)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="table-light align-middle">
+
+            @foreach (var p in Model)
+            {
+                <tr class="text-center ">
+                    <td>
+                        <img src="~/Images/@p.Picture" class="img-hover rounded-1" width="40" />
+                    </td>
+                    <td>@Html.DisplayFor(x => p.ProductName)</td>
+                    <td>@Html.DisplayFor(x => p.ReleaseDate)</td>
+                    <td>@(p.Discontinued == true? "Yes":"No")</td>
+                    <td>@Html.DisplayFor(x=> p.Brand.BrandName)</td>
+                    <td>@Html.DisplayFor(x => p.Price)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Products", new { id = p.ProductId }, new { @class = "btn btn-sm btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", "Products", new { id = p.ProductId }, new { @class = "btn btn-sm btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

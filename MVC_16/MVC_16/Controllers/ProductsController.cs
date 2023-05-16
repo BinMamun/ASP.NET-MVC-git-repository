@@ -18,6 +18,12 @@ namespace MVC_16.Controllers
         {           
             return View(db.Products.Include(x=> x.Brand).ToList());
         }
+
+        public ActionResult BrandWiseProducts(int id)
+        {
+            ViewBag.Brand = db.Brands.First(x => x.BrandId == id).BrandName;
+            return View(db.Products.Include(x=> x.Brand).Where(x=> x.BrandId == id).ToList());
+        }
         public ActionResult Create() 
         {
             ViewBag.Brand = db.Brands.Select(x => new {x.BrandId, x.BrandName}).ToList();
@@ -99,7 +105,7 @@ namespace MVC_16.Controllers
         [HttpPost,ActionName("Delete")]
         public ActionResult DoDelete(int id)
         {
-            var p = new Product { ProductId = id };            
+            Product p = new Product { ProductId = id };            
             db.Entry(p).State = EntityState.Deleted;
 	        db.SaveChanges();
             return RedirectToAction("Index");
