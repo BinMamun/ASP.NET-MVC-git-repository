@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Work_02.Models.Student>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row col-10 offset-5">
+    <h3>Student List</h3>
+</div>
+<hr />
+<div class="d-flex justify-content-end mb-2">
+    @Html.ActionLink("Add New", "Create", "Students", null, new { @class = "btn btn-sm btn-warning" })
+</div>
+<table class="table table-light table-borderless">
+    <thead class="table-warning">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Id)</th>
+            <th>@Html.DisplayNameFor(x => x.Name)</th>
+            <th>@Html.DisplayNameFor(x => x.Dob)</th>
+            <th>@Html.DisplayNameFor(x => x.Address)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => s.Id)</td>
+                <td>@Html.DisplayFor(x => s.Name)</td>
+                <td>@Html.DisplayFor(x => s.Dob)</td>
+                <td>@Html.DisplayFor(x => s.Address)</td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", "Students", new {id = s.Id }, new { @class = "btn btn-outline-warning bi bi-pencil" })
+                    @Html.ActionLink(" ", "Delete", "Students", new { id = s.Id }, new { @class = "btn btn-outline-warning bi bi-trash" })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@section styles{
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}

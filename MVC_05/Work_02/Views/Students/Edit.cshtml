@@ -1,0 +1,63 @@
+﻿@model Work_02.Models.Student
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class=" row align-items-center mb-4">
+    <p class="card-text col-4">Date: @DateTime.Now.ToString("dd-MMM-yyyy")</p>
+    <h3 class="col-5">Edit Students</h3>
+    <div class="col-2 d-flex justify-content-end">
+        @Html.ActionLink(" ", "Index", "Students", null, new { title = "Back to list", @class = "btn btn-warning bi bi-arrow-left" })
+    </div>
+    <hr />
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="row col-12 mb-2 offset-2">
+        @Html.LabelFor(x => x.Name, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control col-auto" })
+        </div>
+        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger col-4" })
+
+    </div>
+    <div class="row col-12 mb-2 offset-2">
+        @Html.LabelFor(x => x.Dob, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.Dob, new { @class = "form-control col-4" })
+        </div>
+        @Html.ValidationMessageFor(x => x.Dob, "", new { @class = "text-danger col-2" })
+    </div>
+    <div class="row col-12 mb-2 offset-2">
+        @Html.LabelFor(x => x.Address, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-3">
+            @Html.TextAreaFor(x => x.Address, new { @class = "form-control col-4" })
+        </div>
+        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger col-3" })
+    </div>
+
+    <div class="offset-5 col-12">
+        <button type="submit" title="Save to database" class="btn btn-outline-warning">Update</button>
+    </div>
+}
+@section styles{
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $("#Dob").datepicker({
+            format: 'yyyy-mm-dd'
+        })
+    </script>
+}
+

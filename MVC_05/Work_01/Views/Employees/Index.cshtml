@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Work_01.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class=" row align-items-center">
+    <p class="card-text col-5">Date: @DateTime.Now.ToString("dd-MMM-yyyy")</p>
+    <h2 class="col-5">Index</h2>
+    <p class="card-text col-2 d-flex justify-content-end">Total Employees: @ViewBag.Count</p>
+    <hr />
+</div>
+<div class="d-flex justify-content-end mb-2">
+    @Html.ActionLink(" Add New", "Create", "Employees", null, new { title= "Add new Employee", @class="btn btn-warning btn-sm bi bi-plus-lg"})
+</div>
+
+<table class="table table-light table-striped table-borderless">
+    <thead class="table-warning">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.EmployeeId)</th>
+            <th>@Html.DisplayNameFor(x => x.EmployeeName)</th>
+            <th>@Html.DisplayNameFor(x => x.JoinDate)</th>
+            <th>@Html.DisplayNameFor(x => x.Contact)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x=> e.EmployeeId)</td>
+                <td>@Html.DisplayFor(x=> e.EmployeeName)</td>
+                <td>@Html.DisplayFor(x=> e.JoinDate)</td>
+                <td>@Html.DisplayFor(x=> e.Contact)</td>
+                
+                <td>
+                    @Html.ActionLink(" ", "Edit", "Employees", new { id= e.EmployeeId }, new { title="Edit", @class= "btn btn-sm btn-outline-primary bi bi-pencil"})
+                    @Html.ActionLink(" ", "Delete", "Employees", new { id= e.EmployeeId }, new { title="Delete", @class= "btn btn-sm btn-outline-danger bi bi-trash"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section styles{
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}

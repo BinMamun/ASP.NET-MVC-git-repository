@@ -1,0 +1,45 @@
+﻿@model Work_01.Models.Employee
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class=" row align-items-center mb-4">
+    <p class="card-text col-4">Date: @DateTime.Now.ToString("dd-MMM-yyyy")</p>
+    <h2 class="col-5">Delete</h2>
+    <div class="col-2 d-flex justify-content-end">
+        @Html.ActionLink(" ", "Index", "Employees", null, new { title = "Back to list", @class = "btn btn-circle btn-warning bi bi-arrow-left" })
+    </div>
+    <hr />
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="row col-12 mb-2 offset-2">
+        @Html.LabelFor(x => x.EmployeeName, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.EmployeeName, new { @readonly = "true", @class = "form-control col-auto" })
+        </div>
+    </div>
+    <div class="row col-12 mb-2 offset-2">
+        @Html.LabelFor(x => x.JoinDate, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.JoinDate, new { @readonly = "true", @class = "form-control col-4" })
+        </div>
+    </div>
+    <div class="row col-12 mb-2 offset-2">
+        @Html.LabelFor(x => x.Contact, new { @class = "col-form-label col-2 text-end" })
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.Contact, new { @readonly = "true", @class = "form-control col-4" })
+        </div>
+    </div>
+
+    <div class="offset-5 col-12">
+        <button type="submit" title="Save to database" class="btn btn-outline-danger">Delete</button>
+    </div>
+}
+
+@section styles{
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
+
+
