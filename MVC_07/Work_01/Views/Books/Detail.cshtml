@@ -1,0 +1,31 @@
+﻿@model Work_01.Models.Book
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="row align-items-center col">
+    <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
+    <div class="col-6 d-flex justify-content-center"><h3 class="display-6">Book Info</h3></div>
+    <hr />
+</div>  
+<div class="col-11 d-flex justify-content-end">
+    @Html.ActionLink(" ", "Index", "Books", null, new {@title="Back to list", @class = "btn btn-sm btn-primary bi-arrow-left" })
+</div>
+<div class="col-6 d-flex justify-content-center offset-3">
+    <div class="card shadow-sm" style="width: 20rem">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(x => x.Title)</h5>
+            <div class="card-text mb-1">
+                @Html.LabelFor(x => x.Genre, new { @class = "col-form-label" }) : @Html.DisplayFor(x => x.Genre)
+            </div>
+            <div class="card-text mb-1">
+                @Html.LabelFor(x => x.Price, new { @class = "col-form-label" }) : @Html.DisplayFor(x => x.Price)
+            </div>
+            
+        </div>
+    </div>
+</div>
+@section styles {
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
