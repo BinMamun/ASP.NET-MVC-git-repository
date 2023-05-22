@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Work_01.Models.Genre>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row align-items-center mb-2">
+    <div class="col-3">Date: @DateTime.Now.ToString("dd/MM/yyyy")</div>
+    <div class="col-6 text-center display-6">Genre List</div>
+    <div class="col-3 text-end">Total Genres: @ViewBag.Count</div>
+    <hr />
+</div>
+<div class="col-11 text-end mb-2" style="margin-left: 20px;">
+    @Html.ActionLink(" ", "Create", "Genres", null, new {@class="btn btn-sm btn-success bi-plus-lg"})
+</div>
+<div class="container">
+    <table class="table table-sm table-striped table-borderedless table-dark">
+        <thead class="table-success">
+            <tr class="text-center">
+                <th>@Html.DisplayNameFor(x => x.GenreId)</th>
+                <th>@Html.DisplayNameFor(x => x.GenreName)</th>
+                <th>@Html.DisplayNameFor(x => x.Description)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var g in Model)
+            {
+                <tr class="text-center">
+                    <td>@Html.DisplayFor(x => g.GenreId)</td>
+                    <td>@Html.ActionLink(g.GenreName, "BooksByGenre", "Books", new { id = g.GenreId }, new { @class = "text-light" })</td>
+                    <td>@Html.DisplayFor(x => g.Description)</td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", "Genres", new { id = g.GenreId }, new { @class = "btn btn-sm btn-outline-light bi-pencil text-primary" })
+                        @Html.ActionLink(" ", "Delete", "Genres", new { id = g.GenreId }, new { @class = "btn btn-sm btn-outline-light bi-trash text-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section styles{
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}

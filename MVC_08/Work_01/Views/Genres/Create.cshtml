@@ -1,0 +1,54 @@
+﻿@model Work_01.Models.Genre
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row align-items-center">
+    <div class="col-3">@DateTime.Now.ToString("dd/MM/yyyy")</div>
+    <div class="col-6 text-center display-6">Create Genre</div>
+    <hr />
+</div>
+
+<div class="col-11 text-end" style="margin-left:20px;">
+    @Html.ActionLink(" ", "Index", "Genres", null, new { @class = "btn btn-sm btn-success bi-arrow-left" })
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="row col form-group offset-3 mb-2">
+        <div class="col-2 text-end">
+            @Html.LabelFor(x => x.GenreName, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.GenreName, new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.ValidationMessageFor(x => x.GenreName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row col form-group offset-3 mb-2">
+        <div class="col-2 text-end">
+            @Html.LabelFor(x => x.Description, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        </div>
+        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+    </div>
+    <div class="row form-group offset-5 mb-2">
+        <div class="col-2">
+            <button type="submit" title="Save to List" class="btn btn-success" style="margin-left:40px;">Save</button>
+        </div>
+    </div>
+}
+
+
+@section styles{
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

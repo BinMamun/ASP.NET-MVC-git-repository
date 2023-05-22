@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Work_01.Models.Book>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row align-items-center col">
+    <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
+    <div class="col-6 d-flex justify-content-center display-6">Books List</div>
+    <div class="col-3 text-end"><p class="card-text">Total Books: @ViewBag.Count</p></div>
+    <hr />
+</div>
+<div class="text-end mb-2 col-11" style="margin-left:20px;">
+    @Html.ActionLink(" ", "Create", "Books", null, new { @title = "Add new book", @class = "btn btn-sm btn-success bi bi-plus-lg" })
+</div>
+<div class="container">
+    <table class="table table-striped table-dark table-borderedless table-sm">
+        <thead class="table-success">
+            <tr>
+                <th class="text-center">@Html.DisplayNameFor(x => x.BookId)</th>
+                <th class="col-4 text-center">@Html.DisplayNameFor(x => x.Title)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.GenreId)</th>
+                <th class="col-2 text-end">@Html.DisplayNameFor(x => x.Price)</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var books in Model)
+            {
+                <tr>
+                    <td class="text-center">@Html.DisplayFor(x => books.BookId)</td>
+                    <td class="text-center">@Html.DisplayFor(x => books.Title)</td>
+                    <td class="text-center">@Html.ActionLink(books.Genre.GenreName, "BooksByGenre", "Books", new { id = books.GenreId}, new { @class="text-light"})</td>
+                    <td class="text-end">@Html.DisplayFor(x => books.Price)</td>
+                    <td class="text-center">
+                        @Html.ActionLink(" ", "Edit", "Books", new { id = books.BookId }, new { @title = "Edit", @class = "btn btn-sm btn-outline-light bi bi-pencil-square text-warning" })
+                        @Html.ActionLink(" ", "Detail", "Books", new { id = books.BookId }, new { @title = "Detail", @class = "btn btn-sm btn-outline-light bi bi-info-square text-primary" })
+                        @Html.ActionLink(" ", "Delete", "Books", new { id = books.BookId }, new { @title = "Delete", @class = "btn btn-sm btn-outline-light bi bi-trash3 text-danger " })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section styles {
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
+
