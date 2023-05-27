@@ -1,0 +1,86 @@
+﻿@model Work_01.ViewModel.EmployeeViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row align-items-center col mb-5">
+    <div class="col-3"><p class="card-text">Date: @DateTime.Now.ToString("dd/MM/yyyy")</p></div>
+    <div class="col-6 d-flex justify-content-center"><h5 class="display-6" style="margin-right: 117px;">Create new Employee</h5></div>
+    <hr />
+</div>
+<div class="col-11 d-flex justify-content-end mb-5">
+    @Html.ActionLink(" ", "Index", "Employees", null, new { @title = "Back to list", @class = "btn btn-sm btn-success bi-arrow-left" })
+</div>
+
+@using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="form-group row col-8 offset-3 mb-2">
+        <div class="col-2 text-end">
+            @Html.LabelFor(x => x.Name, new { @class = "col-from-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row col-8 offset-3 mb-2">
+        <div class="col-2 text-end">
+            @Html.LabelFor(x => x.JoinDate, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.JoinDate, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.JoinDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row col-8 offset-3 mb-2">
+        <div class="col-2 text-end">
+            @Html.LabelFor(x => x.Picture, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", type = "file" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row col-8 offset-3 mb-2">
+        <div class="col-2 text-end">
+            @Html.LabelFor(x => x.Address, new { @class = "col-form-label" })
+        </div>
+        <div class="col-4">
+            @Html.TextAreaFor(x => x.Address, new { @class = "form-control" })
+        </div>
+        <div class="col-4">
+            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group col-1 offset-5">
+        <button type="submit" title="Save to database" class="btn btn-success" style="margin-left: 30px;">Save</button>
+    </div>
+}
+
+@section styles {
+
+    <link href="~/Content/icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $("#JoinDate").datepicker({
+            format: "yyyy/mm/dd"
+        })
+    </script>
+
+}
