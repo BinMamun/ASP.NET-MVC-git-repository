@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<Work_01.Models.Production>
+@using PagedList.Mvc; 
+@using PagedList;
+@{
+    ViewBag.Title = "IndexV2";
+}
+<div class="row align-items-center mb-2">
+    <div class="col-3">Date: @DateTime.Now.ToString("dd/MM/yyyy")</div>
+    <div class="col-6 text-center display-6">Production List</div>
+    <hr />
+</div>
+<div class="col-11 text-end mb-2" style="margin-left: 20px;">
+    @Html.ActionLink("Add New", "Create", "Productions", null, new { @class = "btn btn-sm btn-success" })
+</div>
+<div class="container">
+    <table class="table table-sm table-striped table-borderedless table-light">
+        <thead class="table-success">
+            <tr class="text-center">
+                <th>@Html.DisplayNameFor(x => x.Id)</th>
+                <th>@Html.DisplayNameFor(x => x.Item)</th>
+                <th>@Html.DisplayNameFor(x => x.From)</th>
+                <th>@Html.DisplayNameFor(x => x.To)</th>
+                <th>@Html.DisplayNameFor(x => x.PerDay)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr class="text-center align-middle">
+                    <td>@Html.DisplayFor(x => p.Id)</td>
+                    <td>@Html.DisplayFor(x => p.Item)</td>
+                    <td>@Html.DisplayFor(x => p.From)</td>
+                    <td>@Html.DisplayFor(x => p.To)</td>
+                    <td>@Html.DisplayFor(x => p.PerDay)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Productions", new { id = p.Id }, new { @class = "btn btn-sm btn-outline-light text-primary" })
+                        @Html.ActionLink("Delete", "Delete", "Productions", new { id = p.Id }, new { @class = "btn btn-sm btn-outline-light text-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        @Html.PagedListPager((IPagedList)Model, pg => Url.Action("IndexV2", new { pg }))
+    </div>
+</div>
+@section styles{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
