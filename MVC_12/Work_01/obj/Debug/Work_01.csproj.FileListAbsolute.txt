@@ -52,3 +52,7 @@ E:\Asp.NET MVC\MVC_12\Work_01\obj\Debug\Work_01.csproj.CoreCompileInputs.cache
 E:\Asp.NET MVC\MVC_12\Work_01\obj\Debug\Work_01.csproj.CopyComplete
 E:\Asp.NET MVC\MVC_12\Work_01\obj\Debug\Work_01.dll
 E:\Asp.NET MVC\MVC_12\Work_01\obj\Debug\Work_01.pdb
+E:\Asp.NET MVC\MVC_12\Work_01\bin\EntityFramework.dll
+E:\Asp.NET MVC\MVC_12\Work_01\bin\EntityFramework.SqlServer.dll
+E:\Asp.NET MVC\MVC_12\Work_01\bin\EntityFramework.xml
+E:\Asp.NET MVC\MVC_12\Work_01\bin\EntityFramework.SqlServer.xml

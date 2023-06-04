@@ -8,6 +8,11 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
     @RenderSection("styles", false)
 
 </head>
@@ -21,11 +26,8 @@
                         @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Movies", "Index", "Movies", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Actors", "Index", "Actors", null, new { @class = "nav-link" })
-                    </li>                    
+                        @Html.ActionLink("Articles", "Index", "Articles", null, new { @class = "nav-link" })
+                    </li>                                       
                 </ul>
             </div>
         </div>

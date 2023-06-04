@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Work_01.Models.Article>
+
+<table class="table table-responsive table-striped">
+    <thead class=" table-success">
+        <tr>
+            <th>Title</th>
+            <th>Release Date</th>
+            <th>User Rating</th>
+            <th>Total Views</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Title</td>
+                <td>@a.ReleaseDate.ToShortDateString()</td>
+                <td>@a.UserRating</td>
+                <td>@a.TotalView</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="col-12 d-flex justify-content-center">
+    <ul class="pagination">
+
+        <li class="page-item @(ViewBag.CurrentPage > 1 ? "" : "hide")" >
+            @Ajax.ActionLink("<", "ArticleList",
+                                new { pg = ViewBag.CurrentPage - 1 },
+                                new AjaxOptions
+                                     {
+                                    HttpMethod = "Get",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "placeholder"
+                                }, new { @class = "page-link" })
+        </li>
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                @Ajax.ActionLink(i.ToString(), "ArticleList",
+                                    new { pg = i },
+                                    new AjaxOptions
+                                         {
+                                        HttpMethod = "Get",
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "placeholder"
+                                    }, new { @class = "page-link" })
+            </li>
+        }
+
+        <li class="page-item @(ViewBag.CurrentPage < ViewBag.TotalPages ? "" : "hide")" >
+            @Ajax.ActionLink(">", "ArticleList",
+                                new { pg = ViewBag.CurrentPage + 1 },
+                                new AjaxOptions
+                                     {
+                                    HttpMethod = "Get",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "placeholder"
+                                }, new { @class = "page-link" })
+        </li>
+    </ul>
+</div>
+
